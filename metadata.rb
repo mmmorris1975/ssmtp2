@@ -1,0 +1,13 @@
+name             'ssmtp'
+maintainer       'Michael Morris'
+maintainer_email 'michael.m.morris@gmail.com'
+license          '3-clause BSD'
+description      'Installs/Configures ssmtp'
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version          '0.1.0'
+
+%w(redhat centos fedora ubuntu debian).each do |p|
+  supports p
+end
+
+depends 'yum', '< 3.0.0'

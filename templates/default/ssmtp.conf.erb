@@ -1,0 +1,74 @@
+#
+# /etc/ssmtp.conf -- a config file for sSMTP sendmail.
+#
+# See the ssmtp.conf(5) man page for a more verbose explanation of the
+# available options.
+#
+<% if @debug -%>
+Debug=YES
+<% end -%>
+
+<% if ! @root.nil? && ! @root.strip.empty? -%>
+# The person who gets all mail for userids < 1000
+# Make this empty to disable rewriting.
+root=<%= @root -%>
+<% end -%>
+
+# The place where the mail goes. The actual machine name is required
+# no MX records are consulted. Commonly mailhosts are named mail.domain.com
+# The example will fit if you are in domain.com and your mailhub is so named.
+mailhub=<%= @mailhub %>
+
+<% if ! @rewrite_domain.strip.empty? -%>
+# Where will the mail seem to come from?
+RewriteDomain=<%= @rewrite_domain -%>
+<% end -%>
+
+# The full hostname
+Hostname=<%= @hostname %>
+
+<% if @from_override -%>
+# Set this to never rewrite the "From:" line (unless not given) and to
+# use that address in the "from line" of the envelope.
+FromLineOverride=YES
+<% end -%>
+
+<% if @use_tls -%>
+# Use SSL/TLS to send secure messages to server.
+UseTLS=YES
+<% end -%>
+
+<% if @use_starttls -%>
+# Switch to SSL/TLS to send secure messages to server.
+UseSTARTTLS=YES
+<% end -%>
+
+<% if ! @tls_ca_file.nil? && ! @tls_ca_file.strip.empty? -%>
+#IMPORTANT: The following line is mandatory for TLS authentication
+TLS_CA_File=<%= @tls_ca_file -%>
+<% end -%>
+
+<% if ! @tls_ca_dir.nil? && ! @tls_ca_dir.strip.empty? -%>
+TLS_CA_Dir=<%= @tls_ca_dir -%>
+<% end -%>
+
+<% if ! @tls_cert.nil? && ! @tls_cert.strip.empty? -%>
+# Use this RSA certificate.
+TLSCert=<%= @tls_cert -%>
+<% end -%>
+
+<% if ! @tls_key.nil? && ! @tls_key.strip.empty? -%>
+TLSKey=<%= @tls_key -%>
+<% end -%>
+
+<% if ! @username.nil? && ! @username.strip.empty? -%>
+AuthUser=<%= @username -%>
+<% end -%>
+
+<% if ! @password.nil? && ! @password.strip.empty? -%>
+AuthPass=<%= @password -%>
+<% end -%>
+
+<% if ! @auth_method.nil? && ! @auth_method.strip.empty? -%>
+AuthMethod=<%= @auth_method -%>
+<% end -%>

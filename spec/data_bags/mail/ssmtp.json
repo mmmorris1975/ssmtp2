@@ -1,0 +1,9 @@
+{
+  "id": "ssmtp",
+  "email-smtp.us-east-1.amazonaws.com": {
+    "port": 465,
+    "username": "my_user",
+    "password": "my_pass",
+    "use_tls":  true
+  }
+}
