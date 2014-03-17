@@ -1,4 +1,4 @@
-ssmtp Cookbook
+ssmtp2 Cookbook
 ===================
 A cookbook to configure the ssmtp utility. The ssmtp tool is a mail transfer agent (MTA), whose only function is to send messages from the local system to a proper mail relay.  The means that systems which previously used full-blown MTAs like sendmail/postfix/exim/etc... to send mail off to other systems, but never had a requirement to receive or process mail, can use ssmtp as a drop-in replacement; with a much simpler configuration, and likely less security concerns.
 

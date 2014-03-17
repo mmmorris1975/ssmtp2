@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ssmtp
+# Cookbook Name:: ssmtp2
 # Recipe:: default
 #
 # Copyright 2014, Mike Morris
