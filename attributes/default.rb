@@ -27,11 +27,11 @@ default['ssmtp']['tls']['tls_auth_cert'] = ''
 default['ssmtp']['tls']['tls_auth_key']  = ''
 
 # If empty, use attrs only (user assumes all risk for plain-text credentials)
-default['ssmtp']['data_bag']['name'] = 'mail' 
+default['ssmtp']['data_bag']['name'] = 'mail'
 default['ssmtp']['data_bag']['item'] = 'ssmtp'
 
 # Always check encrypted databag, unless (this.attr).chomp.strip.downcase.eql? 'plain'
-default['ssmtp']['data_bag']['format'] = 'encrypted' 
+default['ssmtp']['data_bag']['format'] = 'encrypted'
 
 # A hash like: {'user1': 'alias1', 'user2': 'alias2'}, used for building revaliases file
-default['ssmtp']['aliases'] = {} 
+default['ssmtp']['aliases'] = {}

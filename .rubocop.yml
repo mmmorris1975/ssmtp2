@@ -1,0 +1,8 @@
+Encoding:
+  Enabled: false
+
+LineLength:
+  Max: 128
+
+NumericLiterals:
+  Enabled: false

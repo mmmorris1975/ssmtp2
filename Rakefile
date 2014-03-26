@@ -17,7 +17,7 @@ task :distclean => [:clean] do |t|
 end
 
 task :test do |t|
-  sh "bundle exec strainer test"
+  sh "bundle exec strainer test" if ::File.exists?(::File.join(cb_dir, "Strainerfile"))
 end
 
 task :bundle => [:test] do |t|
