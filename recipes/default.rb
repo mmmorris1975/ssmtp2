@@ -6,7 +6,10 @@
 #
 
 # ssmtp is in the epel yum repo on rhel-ish platforms
-include_recipe 'yum::epel' if platform_family?('rhel')
+if platform_family? 'rhel'
+  node.set['yum']['epel']['enabled'] = true
+  include_recipe 'yum-epel'
+end
 
 package 'ssmtp' do
   action :upgrade

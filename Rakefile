@@ -13,7 +13,9 @@ end
 
 task :distclean => [:clean] do |t|
   ::Dir.chdir(cb_dir)
-  ::File.unlink(::File.join('..', "#{cb_name}.tar"))
+
+  file = ::File.join('..', "#{cb_name}.tar")
+  ::File.unlink(file) if ::File.exists? file
 end
 
 task :knife_test do |t|
