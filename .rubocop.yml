@@ -6,3 +6,6 @@ LineLength:
 
 NumericLiterals:
   Enabled: false
+
+MethodLength:
+  Max: 40
