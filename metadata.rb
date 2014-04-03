@@ -1,10 +1,10 @@
-name             'ssmtp2'
-maintainer       'Michael Morris'
+name 'ssmtp2'
+maintainer 'Michael Morris'
 maintainer_email 'michael.m.morris@gmail.com'
-license          '3-clause BSD'
-description      'Installs/Configures ssmtp'
+license '3-clause BSD'
+description 'Installs/Configures ssmtp'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.2.0'
+version '0.2.0'
 
 %w(redhat centos fedora ubuntu debian).each do |p|
   supports p

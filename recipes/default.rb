@@ -65,7 +65,7 @@ end
 
 if ca_crt_file.nil? || ca_crt_file.strip.empty?
   ['/etc/pki/tls/certs/ca-bundle.crt', '/etc/ssl/certs/ca-bundle.crt', '/etc/ssl/certs/ca-certificates.crt'].each do |f|
-    if ::File.exists?(f)
+    if ::File.exist?(f)
       ca_crt_file = f
       break
     end
@@ -74,9 +74,9 @@ end
 
 template "#{node['ssmtp']['conf_dir']}/revaliases" do
   source 'revaliases.erb'
-  owner  'root'
-  group  'root'
-  mode   '0644'
+  owner 'root'
+  group 'root'
+  mode '0644'
   variables(
     aliases: node['ssmtp']['aliases'],
     mailhub: mailhub
@@ -85,9 +85,9 @@ end
 
 template "#{node['ssmtp']['conf_dir']}/ssmtp.conf" do
   source 'ssmtp.conf.erb'
-  owner  'root'
-  group  'mail'
-  mode   '2640'
+  owner 'root'
+  group 'mail'
+  mode '2640'
   variables(
     debug: node['ssmtp']['debug'],
     root:  node['ssmtp']['root'],
