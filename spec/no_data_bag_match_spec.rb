@@ -35,6 +35,8 @@ platforms.each do |i|
           node.set['ssmtp']['rewrite_domain']  = 'mydomain.com'
           node.set['ssmtp']['aliases'] = { root: 'no-reply@mydomain.com', user1: 'no-reply@mydomain.com' }
           node.set['ssmtp']['data_bag']['format'] = 'plain'
+          # Force value to correctly run on MacOS
+          node.set['ssmtp']['tls']['tls_ca_file'] = '/etc/ssl/certs/ca-bundle.crt'
 
           Chef::Config[:solo] = true
           Chef::Config[:data_bag_path] = File.join(File.dirname(__FILE__), '/data_bags')

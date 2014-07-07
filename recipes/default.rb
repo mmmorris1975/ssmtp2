@@ -65,10 +65,11 @@ end
 
 if ca_crt_file.nil? || ca_crt_file.strip.empty?
   ['/etc/pki/tls/certs/ca-bundle.crt', '/etc/ssl/certs/ca-bundle.crt', '/etc/ssl/certs/ca-certificates.crt'].each do |f|
-    if ::File.exist?(f)
-      ca_crt_file = f
-      break
-    end
+    # Fixed for rubocop
+    next unless ::File.exist?(f)
+
+    ca_crt_file = f
+    break
   end
 end
 

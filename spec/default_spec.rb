@@ -35,6 +35,8 @@ platforms.each do |i|
           node.set['ssmtp']['rewrite_domain']  = 'mydomain.com'
           node.set['ssmtp']['aliases'] = { root: 'no-reply@mydomain.com', user1: 'no-reply@mydomain.com' }
           node.set['ssmtp']['data_bag']['format'] = 'plain'
+          # Force value to correctly run on MacOS
+          node.set['ssmtp']['tls']['tls_ca_file'] = '/etc/ssl/certs/ca-bundle.crt'
 
           Chef::Config[:solo] = true
           Chef::Config[:data_bag_path] = File.join(File.dirname(__FILE__), '/data_bags')
@@ -75,11 +77,11 @@ platforms.each do |i|
         expect(chef_run).to render_file(file).with_content("mailhub=#{mail_host}:#{mail_port}")
         expect(chef_run).to render_file(file).with_content(/^RewriteDomain=mydomain.com$/)
         expect(chef_run).to render_file(file).with_content(/^FromLineOverride=YES$/)
-        expect(chef_run).to render_file(file).with_content(%r{^TLS_CA_File=/etc/.*/certs/.*\.crt$})
         expect(chef_run).to render_file(file).with_content(/^Hostname=.*/)
         expect(chef_run).to render_file(file).with_content(/^UseTLS=YES$/)
         expect(chef_run).to render_file(file).with_content(/^AuthUser=my_user$/)
         expect(chef_run).to render_file(file).with_content(/^AuthPass=my_pass$/)
+        expect(chef_run).to render_file(file).with_content(%r{^TLS_CA_File=/etc/.*/certs/.*\.crt$})
       end
 
       it 'installs the revaliases file' do
