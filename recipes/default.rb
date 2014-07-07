@@ -11,6 +11,11 @@ if platform_family? 'rhel'
   include_recipe 'yum-epel'
 end
 
+# Force package metadata refresh on debian-type platforms
+execute 'apt-get update' do
+  only_if { platform_family?('debian') }
+end
+
 package 'ssmtp' do
   action :upgrade
 end
