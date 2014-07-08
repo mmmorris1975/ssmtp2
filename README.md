@@ -4,6 +4,8 @@ A cookbook to configure the ssmtp utility. The ssmtp tool is a mail transfer age
 
 Requirements
 ------------
+Ruby 1.9 or later
+
 #### cookbooks
 - `yum` - to configure the epel repo on REHL-ish platforms
 
