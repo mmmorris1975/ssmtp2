@@ -1,26 +1,25 @@
-require 'spec_helper'
+require_relative 'spec_helper'
 
 platforms = [
-  { 'centos' => '6.3' },
-  { 'centos' => '6.4' },
   { 'centos' => '6.5' },
-  { 'redhat' => '6.3' },
-  { 'redhat' => '6.4' },
+  { 'centos' => '7.0' },
   { 'redhat' => '6.5' },
-  { 'fedora' => '18' },
+  { 'redhat' => '7.0' },
   { 'fedora' => '19' },
   { 'fedora' => '20' },
+  { 'fedora' => '21' },
   { 'ubuntu' => '12.04' },
-  { 'ubuntu' => '13.04' },
-  { 'debian' => '7.2' },
-  { 'debian' => '7.4' }
+  { 'ubuntu' => '13.10' },
+  { 'ubuntu' => '14.04' },
+  { 'debian' => '7.4' },
+  { 'debian' => '8.0' }
 ]
 
-platforms.each do
-  |i| i.each_pair do |p, v|
+platforms.each do |i|
+  i.each_pair do |p, v|
     describe 'ssmtp2::default' do
       let :chef_run do
-        ChefSpec::Runner.new(platform: p, version: v, log_level: 'info'.to_sym) do |node|
+        ChefSpec::SoloRunner.new(platform: p, version: v, log_level: :error) do |node|
           Chef::Log.debug(format('#### FILE: %s  PLATFORM: %s  VERSION: %s ####', ::File.basename(__FILE__), p, v))
 
           env = Chef::Environment.new
