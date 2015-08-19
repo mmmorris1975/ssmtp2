@@ -12,3 +12,7 @@ ssmtp2 CHANGELOG
 0.2.1
 -----
 - [michael.m.morris@gmail.com] - Changed bundle process from tar to 'knife cookbook site share'
+
+0.3.0
+-----
+- [michael.m.morris@gmail.com] - Updates to enable Chef 12 support
