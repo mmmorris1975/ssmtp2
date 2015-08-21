@@ -19,7 +19,7 @@ root=<%= @root -%>
 # The example will fit if you are in domain.com and your mailhub is so named.
 mailhub=<%= @mailhub %>
 
-<% if ! @rewrite_domain.strip.empty? -%>
+<% if !@rewrite_domain.nil? && ! @rewrite_domain.strip.empty? -%>
 # Where will the mail seem to come from?
 RewriteDomain=<%= @rewrite_domain -%>
 <% end -%>

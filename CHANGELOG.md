@@ -15,4 +15,4 @@ ssmtp2 CHANGELOG
 
 0.3.0
 -----
-- [michael.m.morris@gmail.com] - Updates to enable Chef 12 support
+- [michael.m.morris@gmail.com] - Updates to enable Chef 12 support (should still be Chef 11 compliant!)
