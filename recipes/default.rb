@@ -27,13 +27,12 @@ data_bag  = node['ssmtp']['data_bag']['name']
 unless data_bag.nil? || data_bag.strip.empty?
   db_fmt  = node['ssmtp']['data_bag']['format']
   db_item = node['ssmtp']['data_bag']['item']
-  bag = nil
 
-  if db_fmt.nil? || !db_fmt.chomp.strip.downcase.eql?('plain')
-    bag = Chef::EncryptedDataBagItem.load(data_bag, db_item)
-  else
-    bag = Chef::DataBagItem.load(data_bag, db_item)
-  end
+  bag = if db_fmt.nil? || db_fmt.chomp.strip.casecmp('plain').nonzero?
+          Chef::EncryptedDataBagItem.load(data_bag, db_item)
+        else
+          Chef::DataBagItem.load(data_bag, db_item)
+        end
 
   mail_cfg = bag[mail_host]
   unless mail_cfg.nil?
@@ -80,9 +79,9 @@ end
 
 template "#{node['ssmtp']['conf_dir']}/revaliases" do
   source 'revaliases.erb'
-  owner 'root'
-  group 'root'
-  mode '0644'
+  owner node['ssmtp']['revaliases']['owner']
+  group node['ssmtp']['revaliases']['group']
+  mode node['ssmtp']['revaliases']['mode']
   variables(
     aliases: node['ssmtp']['aliases'],
     mailhub: mailhub
@@ -91,9 +90,9 @@ end
 
 template "#{node['ssmtp']['conf_dir']}/ssmtp.conf" do
   source 'ssmtp.conf.erb'
-  owner 'root'
-  group 'mail'
-  mode '2640'
+  owner node['ssmtp']['ssmtp_conf']['owner']
+  group node['ssmtp']['ssmtp_conf']['group']
+  mode node['ssmtp']['ssmtp_conf']['mode']
   variables(
     debug: node['ssmtp']['debug'],
     root:  node['ssmtp']['root'],

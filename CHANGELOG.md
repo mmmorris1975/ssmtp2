@@ -16,3 +16,7 @@ ssmtp2 CHANGELOG
 0.3.0
 -----
 - [michael.m.morris@gmail.com] - Updates to enable Chef 12 support (should still be Chef 11 compliant!)
+
+0.3.1
+-----
+- [michael.m.morris@gmail.com] - Attribute-ized template properties for owner, group, and mode.  (GH #1)

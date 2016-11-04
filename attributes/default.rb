@@ -35,3 +35,11 @@ default['ssmtp']['data_bag']['format'] = 'encrypted'
 
 # A hash like: {'user1': 'alias1', 'user2': 'alias2'}, used for building revaliases file
 default['ssmtp']['aliases'] = {}
+
+# Requested as part of issue #1
+default['ssmtp']['ssmtp_conf']['owner'] = 'root'
+default['ssmtp']['ssmtp_conf']['group'] = 'mail'
+default['ssmtp']['ssmtp_conf']['mode']  = '2640'
+default['ssmtp']['revaliases']['owner'] = 'root'
+default['ssmtp']['revaliases']['group'] = 'root'
+default['ssmtp']['revaliases']['mode']  = '0644'
