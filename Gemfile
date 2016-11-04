@@ -6,7 +6,7 @@ group :test do
   gem 'serverspec', '~> 2.21'
 
   gem 'chef', '~> 12.0'
-  gem 'berkshelf', '~> 3.3'
+  gem 'berkshelf', '~> 4.0'
   gem 'knife-spork'
   gem 'rake'
   gem 'rubocop'
